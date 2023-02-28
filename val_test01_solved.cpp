@@ -79,7 +79,7 @@ void f ( int n )
 
 // Here we should change i<=n to i<n, given that we have a size n array and last index of 
 // the array would be n-1. Here we are try to access index n, which is kind of illegal. 
-  for ( i = 2; i = n; i++ )
+  for ( i = 2; i < n; i++ )
   {
     x[i] = x[i-1] + x[i-2];
     cout << "  " << i << "  " << x[i] << "\n";
