@@ -8,7 +8,7 @@
 #include "intrin-wrapper.h"
 
 #define VEC_LEN 4
-constexpr int M = 4;
+constexpr int M = 8;
 
 void compute_fn0(double* A, double* B, double* C) { // Implicit vectorization
   //#pragma unroll // does not gaurantee vectorization
