@@ -10,8 +10,9 @@
 void compute_fn(double* A, double B, double C) {
   //(*A) = (*A) * B + C;
   //(*A) = C / (*A);
-  (*A) = sqrt(*A);
-  //(*A) = sin(*A);
+  //(*A) = sqrt(*A);
+  (*A) = sin(*A);
+  //(*A) = cos(*A);
 }
 
 int main(int argc, char** argv) {
