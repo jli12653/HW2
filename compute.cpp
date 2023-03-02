@@ -8,8 +8,8 @@
 #define CLOCK_FREQ 3.3e9
 
 void compute_fn(double* A, double B, double C) {
-  //(*A) = (*A) * B + C;
-  (*A) = C / (*A);
+  (*A) = (*A) * B + C;
+  //(*A) = C / (*A);
   //(*A) = sqrt(*A);
   //(*A) = sin(*A);
   //(*A) = cos(*A);
