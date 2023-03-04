@@ -27,10 +27,11 @@ void MMult0(long m, long n, long k, double *a, double *b, double *c) {
 }
 
 void MMult1(long m, long n, long k, double *a, double *b, double *c) {
+  #pragma omp parallel for
   for (long j = 0; j < n; j+=BLOCK_SIZE) {
     for (long p = 0; p < k; p+=BLOCK_SIZE) {
       for (long i = 0; i < m; i+=BLOCK_SIZE) {
-        #pragma omp parallel for
+        
         for (long jj = j; jj < j+BLOCK_SIZE; jj++) {
           for (long pp = p; pp < p+BLOCK_SIZE; pp++) {
             for (long ii = i; ii < i+BLOCK_SIZE; ii++) {
