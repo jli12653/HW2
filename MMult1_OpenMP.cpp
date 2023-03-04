@@ -48,7 +48,7 @@ void MMult1(long m, long n, long k, double *a, double *b, double *c) {
 int main(int argc, char** argv) {
   const long PFIRST = BLOCK_SIZE;
   const long PLAST = 2000;
-  const long PINC = std::max(50/BLOCK_SIZE,1) * BLOCK_SIZE; // multiple of BLOCK_SIZE
+  const long PINC = max(50/BLOCK_SIZE,1) * BLOCK_SIZE; // multiple of BLOCK_SIZE
 
   printf(" Dimension       Time    Gflop/s       GB/s        Error\n");
   for (long p = PFIRST; p < PLAST; p += PINC) {
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
     printf("%10ld %10f %10f %10f", p, time, flops, bandwidth);
 
     double max_err = 0;
-    for (long i = 0; i < m*n; i++) max_err = std::max(max_err, fabs(c[i] - c_ref[i]));
+    for (long i = 0; i < m*n; i++) max_err = max(max_err, fabs(c[i] - c_ref[i]));
     printf(" %10e\n", max_err);
 
     free(a);
