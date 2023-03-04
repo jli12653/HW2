@@ -2,8 +2,8 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <omp.h> 
-//#include "utils.h"
+//#include <omp.h> 
+#include "utils.h"
 
 #define BLOCK_SIZE 16
 
@@ -28,7 +28,7 @@ void MMult1(long m, long n, long k, double *a, double *b, double *c) {
     for (long j = 0; j < n; j+=BLOCK_SIZE) {
       for (long p = 0; p < k; p+=BLOCK_SIZE) {  
         for (long i = 0; i < m; i+=BLOCK_SIZE) {
-          #pragma omp parallel for
+          //#pragma omp parallel for
           for (long jj = j; jj < j+BLOCK_SIZE; jj++) {
             for (long pp = p; pp < p+BLOCK_SIZE; pp++) {
               for (long ii = i; ii < i+BLOCK_SIZE; ii++) {             
@@ -69,14 +69,14 @@ int main(int argc, char** argv) {
       MMult0(m, n, k, a, b, c_ref);
     }
 
-    //Timer t;
-    //t.tic();
-    double t = omp_get_wtime();
+    Timer t;
+    t.tic();
+    //double t = omp_get_wtime();
     for (long rep = 0; rep < NREPEATS; rep++) {
       MMult1(m, n, k, a, b, c);
     }
-    //double time = t.toc();
-    double time = omp_get_wtime()-t;
+    double time = t.toc();
+    //double time = omp_get_wtime()-t;
     double flops = NREPEATS * 2 * m * n * k / 1e9 / time ; // TODO: calculate from m, n, k, NREPEATS, time
     double bandwidth = NREPEATS * (m * n * k / BLOCK_SIZE + 2 * m * n + m * k) * sizeof(double) / 1e9 / time ; // TODO: calculate from m, n, k, NREPEATS, time
     printf("%10ld %10f %10f %10f", p, time, flops, bandwidth);
