@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <omp.h> 
+#include <cstring>
 #include <stdlib.h>
+#include <iostream>
 
 #define BLOCK_SIZE 16
 
