@@ -5,7 +5,7 @@
 // #include <omp.h> 
 #include "utils.h"
 
-#define BLOCK_SIZE 16
+#define BLOCK_SIZE 4
 
 // Note: matrices are stored in column major order; i.e. the array elements in
 // the (m x n) matrix C are stored in the sequence: {C_00, C_10, ..., C_m0,
