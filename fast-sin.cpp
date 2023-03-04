@@ -79,7 +79,7 @@ void sin4_intrin(double* sinx, const double* x) {
     x9  = _mm_mul_pd(x7, x2);
     x11  = _mm_mul_pd(x9, x2);
 
-    __m128 s = x1;
+    __m128d s = x1;
     s = _mm_add_pd(s, _mm_mul_pd(x3 , _mm_set1_pd(c3 )));
     s = _mm_add_pd(s, _mm_mul_pd(x5 , _mm_set1_pd(c5 )));
     s = _mm_add_pd(s, _mm_mul_pd(x7 , _mm_set1_pd(c7 )));
